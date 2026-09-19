@@ -23,12 +23,35 @@ const ROTATION_SPEED: float = 10.0
 # This keeps the camera stable while the character turns.
 @onready var model: Node3D = $Model
 
+# Animation components used to control the character's visual states.
+@onready var animation_player: AnimationPlayer = $Model/AnimationPlayer
+@onready var animation_tree: AnimationTree = $Model/AnimationTree
 
 # Dash state and timers.
 var is_dashing: bool = false
 var dash_timer: float = 0.0
 var dash_cooldown_timer: float = 0.0
 
+# Controls the AnimationTree state machine.
+var animation_state_machine: AnimationNodeStateMachinePlayback
+
+func _ready() -> void:
+	# Connect the player script to the AnimationTree state machine.
+	animation_state_machine = animation_tree.get(
+		"parameters/playback"
+	)
+
+	# Start the character in the idle state.
+	animation_state_machine.travel("Player_Idle_B")
+	
+func update_movement_animation() -> void:
+	if not is_on_floor():
+		return
+
+	if velocity.length() > 0.1:
+		animation_state_machine.travel("Player_Walking_A")
+	else:
+		animation_state_machine.travel("Player_Idle_B")
 
 func _physics_process(delta: float) -> void:
 	# Update dash timers.
@@ -50,6 +73,7 @@ func _physics_process(delta: float) -> void:
 	# Jump when the player is grounded.
 	if Input.is_action_just_pressed("jump") and is_on_floor():
 		velocity.y = JUMP_VELOCITY
+		animation_state_machine.travel("Player_Jump_Full_Short")
 
 
 	# Read movement input from the configured Input Map.
@@ -140,3 +164,5 @@ func _physics_process(delta: float) -> void:
 
 	# Move the CharacterBody3D using the calculated velocity.
 	move_and_slide()
+	
+	update_movement_animation()
