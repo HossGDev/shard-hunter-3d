@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://vj5vv6shignw"]
 
 [ext_resource type="PackedScene" uid="uid://dlout76i2du30" path="res://scenes/player.tscn" id="1_o5qli"]
+[ext_resource type="PackedScene" uid="uid://cn5nvyur3pagm" path="res://scenes/shard.tscn" id="2_0wfyh"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_0wfyh"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -66,3 +67,6 @@ size = Vector3(8, 2, 8)
 [node name="Rocks" type="MeshInstance3D" parent="." unique_id=1877300233]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 1, -4)
 mesh = SubResource("SphereMesh_gctc7")
+
+[node name="Shard" parent="." unique_id=1920099564 instance=ExtResource("2_0wfyh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.1191605)

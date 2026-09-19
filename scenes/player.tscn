@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://dlout76i2du30"]
 
-[ext_resource type="Script" uid="uid://bvp2iacpn7gks" path="res://scenes/player.gd" id="1_3vyb7"]
-[ext_resource type="Script" uid="uid://d2n4olruhr4hy" path="res://scenes/third_person_camera.gd" id="2_g2els"]
+[ext_resource type="Script" uid="uid://bvp2iacpn7gks" path="res://scripts/player.gd" id="1_3vyb7"]
+[ext_resource type="Script" uid="uid://d2n4olruhr4hy" path="res://scripts/third_person_camera.gd" id="2_g2els"]
 [ext_resource type="PackedScene" uid="uid://c3gw58nmq8nb6" path="res://assets/characters/Knight.glb" id="2_qhqgy"]
 [ext_resource type="Animation" uid="uid://renwqen8mqr7" path="res://assets/characters/animations_source/animations/Death_A.res" id="3_u2ulf"]
 [ext_resource type="Animation" uid="uid://6wil1r3ln638" path="res://assets/characters/animations_source/animations/Death_A_Pose.res" id="4_6e8lb"]
@@ -139,7 +139,7 @@ states/Player_Walking_A/position = Vector2(706.5, 212.5)
 transitions = ["Player_Idle_B", "Player_Walking_A", SubResource("AnimationNodeStateMachineTransition_u2ulf"), "Player_Walking_A", "Player_Idle_B", SubResource("AnimationNodeStateMachineTransition_6e8lb"), "Player_Idle_B", "Player_Jump_Full_Short", SubResource("AnimationNodeStateMachineTransition_2gdjj"), "Player_Walking_A", "Player_Jump_Full_Short", SubResource("AnimationNodeStateMachineTransition_sc3ue"), "Player_Jump_Full_Short", "Player_Idle_B", SubResource("AnimationNodeStateMachineTransition_lxlsd"), "Player_Jump_Full_Short", "Player_Walking_A", SubResource("AnimationNodeStateMachineTransition_ha2mi")]
 graph_offset = Vector2(-52.55988, 11.317504)
 
-[node name="Player" type="CharacterBody3D" unique_id=2120328012]
+[node name="Player" type="CharacterBody3D" unique_id=2120328012 groups=["Player"]]
 script = ExtResource("1_3vyb7")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=2098082468]

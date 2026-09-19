@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://cn5nvyur3pagm"]
+
+[ext_resource type="PackedScene" uid="uid://cjfdrma6j665u" path="res://assets/shards/Crystal by iPoly3D - Ftu5CcnxFZ.glb" id="1_pmddc"]
+[ext_resource type="Script" uid="uid://dxunuv53307kb" path="res://scripts/shard.gd" id="1_x0ayr"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_pmddc"]
+radius = 0.22
+
+[node name="Shard" type="Area3D" unique_id=135744961]
+script = ExtResource("1_x0ayr")
+
+[node name="Crystal" parent="." unique_id=483191738 instance=ExtResource("1_pmddc")]
+transform = Transform3D(0.05, 0, 0, 0, 0.05, 0, 0, 0, 0.05, 0, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1830817167]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.15052038, 0)
+shape = SubResource("SphereShape3D_pmddc")
